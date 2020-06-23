@@ -1,17 +1,14 @@
-var POSTID = 0
 var COMMENTID = 0
+
+var posts = new Database('posts')
+
 function newPost() {
-	var post = {
-		id: getPostId(),
+	var post = posts.create({
 		text: getPostText(),
 		user: getUser()
-	}
+	})
 	var elem = createPost(post)
 	addNewPost(elem)
-}
-
-function getPostId() {
-	return ++POSTID
 }
 
 function getCommentId() {
