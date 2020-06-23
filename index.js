@@ -34,9 +34,21 @@ function getUser() {
 	return userNameElement.value
 }
 
+function deletePost(postId) {
+	var postElem = document.getElementById(`post-${postId}`)
+	postElem.parentNode.removeChild(postElem)
+	posts.delete(postId)
+}
+
+
 function createPost(post) {
 	return `
 		<div id="post-${post.id}" class="post container">
+			<div>
+				<button class="post_like_button" onclick="deletePost(${post.id})">
+					delete
+				</button>
+			</div>
 			<div class="post_title">
 				${post.user}
 			</div>
