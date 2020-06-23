@@ -15,7 +15,8 @@ displayAllPosts()
 function newPost() {
 	var post = posts.create({
 		text: getPostText(),
-		user: getUser()
+		user: getUser(),
+		likes: 0
 	})
 	var elem = createPost(post)
 	addNewPost(elem)
@@ -98,7 +99,7 @@ function createPostLikes(post) {
 		<div class="post_likes_container">
 			<div class="post_likes_info">
 				<span class="post_likes_count">
-					0
+					${post.likes}
 				</span> 
 				likes
 			</div>
@@ -111,10 +112,11 @@ function createPostLikes(post) {
 
 function newLike(postId) {
 	var postElem = document.getElementById(`post-${postId}`)
+	var post = posts.getById(postId)
 	var postLikes = postElem.querySelector('div.post_likes_info')
 	var postLikesCountElem = postLikes.querySelector('span.post_likes_count')
-	var postLikesCount = Number(postLikesCountElem.innerText)
-	postLikesCountElem.innerText = ++postLikesCount
+	postLikesCountElem.innerText = ++post.likes
+	posts.update(post)
 }
 
 function addNewPost(elem) {
