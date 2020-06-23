@@ -2,14 +2,47 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="./style.css">
+	<style type="text/css">
+		div {
+			padding: 15px;
+		}
+
+		body {
+			width: 60%;
+			margin: auto;
+		}
+	</style>
 
 </head>
 <body>
 
 	<!-- You can modify lines after this -->
 	<div id="app">
+		<div>
+			<input type="text" name="username" id="username" placeholder="username">
+		</div>
 
+
+		<div>
+			<input type="password" name="password" id="password" placeholder="password">
+		</div>
+		<div>
+			<button onclick="login()">
+				log in
+			</button>
+			<button onclick="register()">
+				register
+			</button>
+		</div>		
 	</div>
+	<script type="text/javascript">
+		function login() {
+			window.location = "./index.html"
+		}
+
+		function register() {
+
+		}
+	</script>
 </body>
 </html>
