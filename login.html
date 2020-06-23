@@ -41,14 +41,29 @@
 			</button>
 		</div>		
 	</div>
+	<script type="text/javascript" src="./database.js"></script>
 	<script type="text/javascript">
-		
+		function getValue(query) {
+			return document.querySelector(query).value
+		}
+		var users = new Database('users')
 
 		function login() {
-			localStorage.setItem('status', 'loggedin')
-			window.location = "./index.html"
+			var user = users.get('username', getValue('input#username'))
+			if (user.password == getValue('input#password')) {
+				localStorage.setItem('status', 'loggedin')
+				window.location = "./index.html"				
+			} else {
+				alert('wrong password')
+			}
+
 		}
 		function register() {
+			var user = {
+				username: getValue('input#username'),
+				password: getValue('input#password')
+			}
+			users.create(user)
 
 		}
 	</script>
