@@ -4,6 +4,9 @@ var posts = new Database('posts')
 
 function displayAllPosts() {
 	var allPosts = posts.getAll()
+	allPosts.sort(function(post1, post2) {
+		return post1.likes.length - post2.likes.length
+	})
 	for (let post of allPosts) {
 		var elem = createPost(post)
 		addNewPost(elem)
