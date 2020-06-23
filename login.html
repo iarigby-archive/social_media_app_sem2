@@ -16,6 +16,12 @@
 </head>
 <body>
 
+	<script>
+		var status = localStorage.getItem('status')
+		if (status == "loggedin") {
+			window.location = "./index.html"
+		}
+	</script>
 	<!-- You can modify lines after this -->
 	<div id="app">
 		<div>
@@ -36,10 +42,12 @@
 		</div>		
 	</div>
 	<script type="text/javascript">
+		
+
 		function login() {
+			localStorage.setItem('status', 'loggedin')
 			window.location = "./index.html"
 		}
-
 		function register() {
 
 		}
